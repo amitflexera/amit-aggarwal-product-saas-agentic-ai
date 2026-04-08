@@ -1,0 +1,1860 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Amit Aggarwal — Product Leader | FinOps & AI</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════════════════════════════════
+   DESIGN TOKENS — UNTITLED UI
+═══════════════════════════════════════════ */
+:root {
+  --gray-25:  #FCFCFD;
+  --gray-50:  #F9FAFB;
+  --gray-100: #F2F4F7;
+  --gray-200: #EAECF0;
+  --gray-300: #D0D5DD;
+  --gray-400: #98A2B3;
+  --gray-500: #667085;
+  --gray-600: #475467;
+  --gray-700: #344054;
+  --gray-800: #1D2939;
+  --gray-900: #101828;
+
+  --primary-25:  #F5F8FF;
+  --primary-50:  #EEF4FF;
+  --primary-100: #E0EAFF;
+  --primary-200: #C7D7FE;
+  --primary-300: #A4BCFD;
+  --primary-500: #6172F3;
+  --primary-600: #444CE7;
+  --primary-700: #3538CD;
+  --primary-800: #2D31A6;
+
+  --success-25:  #F6FEF9;
+  --success-50:  #ECFDF3;
+  --success-100: #DCFAE6;
+  --success-500: #17B26A;
+  --success-600: #079455;
+  --success-700: #067647;
+
+  --warning-25:  #FFFCF5;
+  --warning-50:  #FFFAEB;
+  --warning-100: #FEF0C7;
+  --warning-500: #F79009;
+  --warning-600: #DC6803;
+  --warning-700: #B54708;
+
+  --error-50:  #FEF3F2;
+  --error-500: #F04438;
+  --error-700: #B42318;
+
+  --white: #FFFFFF;
+
+  --shadow-xs: 0 1px 2px rgba(16,24,40,.05);
+  --shadow-sm: 0 1px 3px rgba(16,24,40,.10),0 1px 2px rgba(16,24,40,.06);
+  --shadow-md: 0 4px 8px -2px rgba(16,24,40,.10),0 2px 4px -2px rgba(16,24,40,.06);
+  --shadow-lg: 0 12px 16px -4px rgba(16,24,40,.08),0 4px 6px -2px rgba(16,24,40,.03);
+  --shadow-xl: 0 20px 24px -4px rgba(16,24,40,.08),0 8px 8px -4px rgba(16,24,40,.03);
+  --shadow-2xl: 0 24px 48px -12px rgba(16,24,40,.18);
+
+  --r-sm:   6px;
+  --r-md:   8px;
+  --r-lg:  12px;
+  --r-xl:  16px;
+  --r-2xl: 20px;
+  --r-3xl: 24px;
+  --r-full: 9999px;
+
+  --font: 'Plus Jakarta Sans', sans-serif;
+  --nav-h: 68px;
+}
+
+/* ═══════════════════════════════════════════
+   RESET & BASE
+═══════════════════════════════════════════ */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;overflow-x:hidden}
+body{font-family:var(--font);background:var(--gray-50);color:var(--gray-900);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+ul,ol{list-style:none}
+img{max-width:100%;display:block}
+button{cursor:pointer;border:none;background:none;font-family:inherit}
+
+/* ═══════════════════════════════════════════
+   UTILITY
+═══════════════════════════════════════════ */
+.container{max-width:1160px;margin:0 auto;padding:0 24px;width:100%}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+
+/* ═══════════════════════════════════════════
+   ANIMATIONS
+═══════════════════════════════════════════ */
+@keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.5}}
+.anim-1{animation:fadeUp .55s ease both}
+.anim-2{animation:fadeUp .55s .1s ease both}
+.anim-3{animation:fadeUp .55s .2s ease both}
+.anim-4{animation:fadeUp .55s .3s ease both}
+.anim-5{animation:fadeUp .55s .4s ease both}
+
+/* ═══════════════════════════════════════════
+   NAVIGATION
+═══════════════════════════════════════════ */
+.nav{
+  position:fixed;top:0;left:0;right:0;z-index:200;
+  height:var(--nav-h);
+  background:rgba(255,255,255,.92);
+  backdrop-filter:blur(16px);
+  -webkit-backdrop-filter:blur(16px);
+  border-bottom:1px solid var(--gray-200);
+}
+.nav-inner{
+  max-width:1160px;margin:0 auto;padding:0 24px;
+  height:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;
+}
+.nav-brand{display:flex;align-items:center;gap:10px;flex-shrink:0}
+.nav-avatar{
+  width:36px;height:36px;border-radius:var(--r-full);
+  background:linear-gradient(135deg,var(--primary-600),var(--primary-500));
+  color:#fff;font-size:13px;font-weight:800;letter-spacing:-.3px;
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;
+}
+.nav-brand-text{display:flex;flex-direction:column;line-height:1.2}
+.nav-brand-name{font-size:14px;font-weight:700;color:var(--gray-900);letter-spacing:-.2px}
+.nav-brand-role{font-size:12px;color:var(--gray-500);font-weight:400}
+.nav-links{display:flex;align-items:center;gap:2px}
+.nav-link{
+  padding:7px 12px;border-radius:var(--r-md);
+  font-size:14px;font-weight:500;color:var(--gray-600);
+  transition:all .15s ease;white-space:nowrap;
+}
+.nav-link:hover{background:var(--gray-100);color:var(--gray-900)}
+.nav-cta{
+  display:flex;align-items:center;gap:7px;
+  padding:8px 16px;background:var(--primary-600);color:#fff;
+  border-radius:var(--r-md);font-size:14px;font-weight:600;
+  box-shadow:var(--shadow-xs);transition:all .15s ease;white-space:nowrap;flex-shrink:0;
+}
+.nav-cta:hover{background:var(--primary-700);box-shadow:var(--shadow-md);transform:translateY(-1px)}
+.nav-hamburger{
+  display:none;flex-direction:column;gap:5px;padding:8px;
+  border-radius:var(--r-md);transition:background .15s;
+}
+.nav-hamburger:hover{background:var(--gray-100)}
+.nav-hamburger span{display:block;width:20px;height:2px;background:var(--gray-700);border-radius:2px;transition:all .25s ease}
+.nav-hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.nav-hamburger.open span:nth-child(2){opacity:0}
+.nav-hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.nav-mobile{
+  display:none;position:fixed;top:var(--nav-h);left:0;right:0;z-index:199;
+  background:#fff;border-bottom:1px solid var(--gray-200);
+  padding:16px 24px 20px;box-shadow:var(--shadow-lg);
+  flex-direction:column;gap:4px;
+}
+.nav-mobile.open{display:flex}
+.nav-mobile-link{
+  padding:10px 14px;border-radius:var(--r-md);
+  font-size:15px;font-weight:500;color:var(--gray-700);
+  transition:background .15s;
+}
+.nav-mobile-link:hover{background:var(--gray-50)}
+.nav-mobile-cta{
+  margin-top:8px;padding:12px 16px;background:var(--primary-600);color:#fff;
+  border-radius:var(--r-md);font-size:15px;font-weight:600;text-align:center;
+}
+
+/* ═══════════════════════════════════════════
+   PAGE WRAPPER
+═══════════════════════════════════════════ */
+.page{padding-top:var(--nav-h)}
+
+/* ═══════════════════════════════════════════
+   SECTION SHARED
+═══════════════════════════════════════════ */
+.section{padding:72px 0}
+.section-white{background:var(--white)}
+.section-gray{background:var(--gray-50)}
+.section-dark{background:var(--gray-900)}
+
+.section-header{margin-bottom:44px}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:13px;font-weight:700;color:var(--primary-600);
+  letter-spacing:.6px;text-transform:uppercase;margin-bottom:10px;
+}
+.eyebrow::before{content:'';display:block;width:20px;height:2px;background:var(--primary-600);border-radius:2px}
+.section-title{font-size:30px;font-weight:800;color:var(--gray-900);letter-spacing:-.6px;line-height:1.2;margin-bottom:10px}
+.section-desc{font-size:16px;color:var(--gray-500);line-height:1.75;max-width:600px}
+
+/* ═══════════════════════════════════════════
+   BADGES & PILLS
+═══════════════════════════════════════════ */
+.badge{
+  display:inline-flex;align-items:center;gap:6px;
+  padding:3px 10px;border-radius:var(--r-full);
+  font-size:12px;font-weight:600;line-height:1.5;
+}
+.badge-blue{background:var(--primary-50);border:1px solid var(--primary-200);color:var(--primary-700)}
+.badge-green{background:var(--success-50);border:1px solid var(--success-100);color:var(--success-700)}
+.badge-amber{background:var(--warning-50);border:1px solid var(--warning-100);color:var(--warning-700)}
+.badge-gray{background:var(--gray-100);border:1px solid var(--gray-200);color:var(--gray-700)}
+.badge-live{background:var(--success-50);border:1px solid var(--success-100);color:var(--success-700)}
+.badge-live::before{content:'';width:7px;height:7px;border-radius:50%;background:var(--success-500);animation:pulse 2s infinite}
+
+.outcome-pill{
+  display:inline-flex;align-items:center;gap:6px;
+  padding:5px 12px;border-radius:var(--r-full);
+  background:var(--success-50);border:1px solid var(--success-100);
+  font-size:13px;font-weight:600;color:var(--success-700);
+}
+.outcome-pill svg{width:13px;height:13px;flex-shrink:0}
+.pills-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;padding-top:14px;border-top:1px solid var(--gray-100)}
+
+/* ═══════════════════════════════════════════
+   BUTTONS
+═══════════════════════════════════════════ */
+.btn{display:inline-flex;align-items:center;gap:8px;padding:10px 18px;border-radius:var(--r-md);font-size:14px;font-weight:600;transition:all .15s ease;white-space:nowrap}
+.btn svg{width:16px;height:16px;flex-shrink:0}
+.btn-primary{background:var(--primary-600);color:#fff;box-shadow:var(--shadow-xs)}
+.btn-primary:hover{background:var(--primary-700);box-shadow:var(--shadow-md);transform:translateY(-1px)}
+.btn-secondary-outline{background:#fff;color:var(--gray-700);border:1px solid var(--gray-300);box-shadow:var(--shadow-xs)}
+.btn-secondary-outline:hover{background:var(--gray-50);box-shadow:var(--shadow-sm);transform:translateY(-1px)}
+.btn-lg{padding:12px 22px;font-size:15px}
+
+/* ═══════════════════════════════════════════
+   DIVIDER
+═══════════════════════════════════════════ */
+.divider{height:1px;background:var(--gray-200);margin:28px 0}
+
+/* ═══════════════════════════════════════════
+   HERO
+═══════════════════════════════════════════ */
+.hero{
+  background:#fff;
+  border-bottom:1px solid var(--gray-200);
+  padding:64px 0 56px;
+}
+.hero-grid{display:grid;grid-template-columns:1fr 360px;gap:60px;align-items:center}
+.hero-eyebrow-wrap{display:flex;align-items:center;gap:8px;margin-bottom:20px;flex-wrap:wrap}
+.hero-name{font-size:48px;font-weight:800;letter-spacing:-1.5px;color:var(--gray-900);line-height:1.1;margin-bottom:10px}
+.hero-name em{font-style:normal;color:var(--primary-600)}
+.hero-tagline{font-size:18px;font-weight:500;color:var(--gray-600);margin-bottom:18px;letter-spacing:-.2px;line-height:1.5}
+.hero-desc{font-size:15px;color:var(--gray-500);line-height:1.8;margin-bottom:28px;max-width:540px}
+.hero-actions{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:28px}
+.hero-contacts{display:flex;flex-wrap:wrap;align-items:center;gap:16px;padding-top:22px;border-top:1px solid var(--gray-200)}
+.hero-contact-link{display:flex;align-items:center;gap:6px;font-size:13px;font-weight:500;color:var(--gray-500);transition:color .15s}
+.hero-contact-link:hover{color:var(--primary-600)}
+.hero-contact-link svg{width:15px;height:15px;flex-shrink:0}
+
+/* Hero Card */
+.hero-card{background:var(--gray-25);border:1px solid var(--gray-200);border-radius:var(--r-2xl);padding:24px;box-shadow:var(--shadow-xl)}
+.hero-card-profile{display:flex;align-items:center;gap:12px;margin-bottom:20px;padding-bottom:18px;border-bottom:1px solid var(--gray-200)}
+.hero-card-avatar{width:48px;height:48px;border-radius:var(--r-full);background:linear-gradient(135deg,var(--primary-700),var(--primary-500));color:#fff;font-size:18px;font-weight:800;letter-spacing:-1px;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 12px rgba(68,76,231,.3);flex-shrink:0}
+.hero-card-name{font-size:15px;font-weight:700;color:var(--gray-900);letter-spacing:-.2px}
+.hero-card-role{font-size:12px;color:var(--gray-500)}
+.hero-stats-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:16px}
+.hero-stat{background:#fff;border:1px solid var(--gray-200);border-radius:var(--r-lg);padding:14px 12px;text-align:center}
+.hero-stat-num{font-size:22px;font-weight:800;color:var(--gray-900);letter-spacing:-1px;line-height:1;margin-bottom:3px}
+.hero-stat-num b{color:var(--primary-600)}
+.hero-stat-label{font-size:11px;color:var(--gray-500);font-weight:500;line-height:1.4}
+.hero-chips{display:flex;flex-wrap:wrap;gap:7px}
+
+/* ═══════════════════════════════════════════
+   IMPACT METRICS
+═══════════════════════════════════════════ */
+.metrics-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.metric-card{
+  background:#fff;border:1px solid var(--gray-200);border-radius:var(--r-xl);padding:24px 20px;
+  box-shadow:var(--shadow-sm);transition:all .2s ease;position:relative;overflow:hidden;
+}
+.metric-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--primary-600),var(--primary-400));border-radius:3px 3px 0 0}
+.metric-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-lg)}
+.metric-icon-wrap{width:38px;height:38px;border-radius:var(--r-md);background:var(--primary-50);display:flex;align-items:center;justify-content:center;margin-bottom:14px;font-size:18px}
+.metric-num{font-size:34px;font-weight:800;color:var(--gray-900);letter-spacing:-1.5px;line-height:1;margin-bottom:5px}
+.metric-num b{color:var(--primary-600)}
+.metric-label{font-size:13px;color:var(--gray-500);font-weight:500;line-height:1.55}
+
+/* ═══════════════════════════════════════════
+   EXPERTISE CARDS
+═══════════════════════════════════════════ */
+.expertise-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.exp-card{background:#fff;border:1px solid var(--gray-200);border-radius:var(--r-xl);padding:22px;box-shadow:var(--shadow-sm);transition:all .2s ease}
+.exp-card:hover{border-color:var(--primary-200);box-shadow:var(--shadow-md);transform:translateY(-2px)}
+.exp-card-icon{font-size:26px;margin-bottom:12px;line-height:1}
+.exp-card-title{font-size:15px;font-weight:700;color:var(--gray-900);margin-bottom:8px;letter-spacing:-.2px}
+.exp-card-desc{font-size:13px;color:var(--gray-500);line-height:1.7}
+
+/* ═══════════════════════════════════════════
+   PROFESSIONAL SUMMARY SKILLS LIST
+═══════════════════════════════════════════ */
+.summary-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.summary-item{
+  display:flex;align-items:flex-start;gap:12px;
+  padding:16px;background:#fff;border:1px solid var(--gray-200);border-radius:var(--r-lg);
+  box-shadow:var(--shadow-xs);transition:border-color .15s;
+}
+.summary-item:hover{border-color:var(--primary-200)}
+.summary-icon{font-size:20px;flex-shrink:0;margin-top:1px}
+.summary-item-title{font-size:14px;font-weight:700;color:var(--gray-900);margin-bottom:3px;letter-spacing:-.1px}
+.summary-item-desc{font-size:13px;color:var(--gray-500);line-height:1.65}
+
+/* ═══════════════════════════════════════════
+   EXPERIENCE SECTION
+═══════════════════════════════════════════ */
+.exp-layout{display:grid;grid-template-columns:220px 1fr;gap:32px;align-items:start;min-width:0;max-width:100%}
+.exp-sidebar{position:sticky;top:calc(var(--nav-h) + 20px);max-width:100%;overflow:hidden}
+.exp-nav{display:flex;flex-direction:column;gap:3px}
+.exp-nav-btn{
+  display:flex;align-items:center;gap:9px;
+  padding:9px 12px;border-radius:var(--r-md);
+  font-size:13px;font-weight:500;color:var(--gray-500);
+  transition:all .15s ease;cursor:pointer;text-align:left;
+  border:1px solid transparent;width:100%;
+}
+.exp-nav-btn:hover{background:var(--gray-100);color:var(--gray-900)}
+.exp-nav-btn.active{background:var(--primary-50);color:var(--primary-700);border-color:var(--primary-200);font-weight:600}
+.exp-nav-dot{width:7px;height:7px;border-radius:50%;background:var(--gray-300);flex-shrink:0;transition:background .15s}
+.exp-nav-btn.active .exp-nav-dot{background:var(--primary-600)}
+.exp-nav-meta{margin-left:auto;font-size:11px;color:var(--gray-400);font-weight:400;white-space:nowrap}
+
+/* Job Card */
+.job-cards{display:flex;flex-direction:column;gap:20px;min-width:0}
+.job-card{background:#fff;border:1px solid var(--gray-200);border-radius:var(--r-xl);overflow:hidden;box-shadow:var(--shadow-sm);transition:box-shadow .2s;min-width:0;max-width:100%;word-break:break-word;overflow-wrap:break-word}
+.job-card:hover{box-shadow:var(--shadow-md)}
+.job-card-header{
+  padding:22px 26px 18px;border-bottom:1px solid var(--gray-100);
+  display:flex;align-items:flex-start;justify-content:space-between;gap:12px;
+}
+.job-company{font-size:18px;font-weight:800;color:var(--gray-900);letter-spacing:-.3px;margin-bottom:2px}
+.job-role{font-size:13px;font-weight:600;color:var(--primary-600);margin-bottom:8px}
+.job-meta-row{display:flex;flex-wrap:wrap;align-items:center;gap:12px}
+.job-meta-item{display:flex;align-items:center;gap:5px;font-size:12px;color:var(--gray-500)}
+.job-meta-item svg{width:13px;height:13px;flex-shrink:0}
+.job-body{padding:22px 26px}
+
+/* Sub-section heading inside job */
+.sub-title{
+  font-size:11px;font-weight:700;color:var(--gray-600);
+  text-transform:uppercase;letter-spacing:.7px;
+  margin-bottom:12px;margin-top:22px;
+  display:flex;align-items:center;gap:8px;
+}
+.sub-title:first-child{margin-top:0}
+.sub-title::after{content:'';flex:1;height:1px;background:var(--gray-100)}
+
+/* Bullet list */
+.blist{display:flex;flex-direction:column;gap:9px}
+.bitem{display:flex;gap:10px;align-items:flex-start}
+.bdot{width:6px;height:6px;border-radius:50%;background:var(--primary-400);flex-shrink:0;margin-top:8px}
+.btext{font-size:14px;color:var(--gray-600);line-height:1.7}
+.btext strong{color:var(--gray-800);font-weight:600}
+
+/* FinOps capability grid */
+.finops-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:4px}
+.finops-cap{
+  background:var(--gray-50);border:1px solid var(--gray-200);
+  border-radius:var(--r-md);padding:11px 8px;text-align:center;
+  transition:border-color .15s;
+}
+.finops-cap:hover{border-color:var(--primary-200)}
+.finops-cap-icon{font-size:18px;margin-bottom:4px;display:block}
+.finops-cap-label{font-size:11px;font-weight:600;color:var(--gray-600)}
+
+/* Story card */
+.story-card{background:var(--gray-25);border:1px solid var(--gray-200);border-radius:var(--r-lg);padding:18px;margin-bottom:14px}
+.story-card:last-child{margin-bottom:0}
+.story-card-title{font-size:14px;font-weight:700;color:var(--gray-900);margin-bottom:12px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.story-rows{display:flex;flex-direction:column;gap:0}
+.story-row{display:flex;gap:10px;font-size:13px;color:var(--gray-600);line-height:1.65;padding:8px 0}
+.story-label{font-size:11px;font-weight:700;color:var(--primary-600);white-space:nowrap;min-width:130px;width:130px;flex-shrink:0;padding-top:2px}
+
+/* Awards */
+.awards-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.award-item{display:flex;align-items:flex-start;gap:10px;padding:13px;background:var(--warning-50);border:1px solid var(--warning-100);border-radius:var(--r-lg)}
+.award-emoji{font-size:20px;flex-shrink:0;line-height:1}
+.award-name{font-size:13px;font-weight:600;color:var(--warning-700);line-height:1.35}
+.award-year{font-size:11px;color:var(--warning-500);margin-top:2px}
+
+/* ═══════════════════════════════════════════
+   TOOLS SECTION
+═══════════════════════════════════════════ */
+.tools-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+.tool-card{background:#fff;border:1px solid var(--gray-200);border-radius:var(--r-xl);padding:22px;box-shadow:var(--shadow-sm)}
+.tool-card-header{display:flex;align-items:center;gap:10px;margin-bottom:14px}
+.tool-icon{font-size:22px;line-height:1}
+.tool-title{font-size:15px;font-weight:700;color:var(--gray-900)}
+.tool-tags{display:flex;flex-wrap:wrap;gap:7px}
+.tool-tag{padding:4px 10px;background:var(--gray-100);border:1px solid var(--gray-200);border-radius:var(--r-full);font-size:12px;font-weight:500;color:var(--gray-700)}
+
+/* ═══════════════════════════════════════════
+   CERTIFICATIONS
+═══════════════════════════════════════════ */
+.certs-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.cert-item{display:flex;align-items:flex-start;gap:10px;padding:14px;background:#fff;border:1px solid var(--gray-200);border-radius:var(--r-lg);box-shadow:var(--shadow-xs);transition:border-color .15s}
+.cert-item:hover{border-color:var(--primary-200)}
+.cert-icon{width:30px;height:30px;border-radius:var(--r-md);background:var(--primary-50);display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0}
+.cert-name{font-size:13px;font-weight:600;color:var(--gray-700);line-height:1.45}
+
+/* ═══════════════════════════════════════════
+   EDUCATION
+═══════════════════════════════════════════ */
+.edu-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.edu-card{background:#fff;border:1px solid var(--gray-200);border-radius:var(--r-xl);padding:22px;box-shadow:var(--shadow-sm);display:flex;align-items:flex-start;gap:14px}
+.edu-icon{width:44px;height:44px;border-radius:var(--r-lg);background:var(--primary-50);display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0}
+.edu-degree{font-size:15px;font-weight:700;color:var(--gray-900);margin-bottom:4px;letter-spacing:-.1px}
+.edu-inst{font-size:13px;color:var(--gray-500);margin-bottom:6px}
+.edu-year{font-size:12px;font-weight:600;color:var(--primary-600)}
+
+/* ═══════════════════════════════════════════
+   CONTACT / FOOTER
+═══════════════════════════════════════════ */
+.contact-section{background:var(--gray-900);padding:72px 0}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start}
+.contact-title{font-size:32px;font-weight:800;color:#fff;letter-spacing:-1px;line-height:1.2;margin-bottom:10px}
+.contact-desc{font-size:15px;color:rgba(255,255,255,.55);line-height:1.75;margin-bottom:28px}
+.contact-links{display:flex;flex-direction:column;gap:10px}
+.contact-link-item{
+  display:flex;align-items:center;gap:12px;padding:14px 16px;
+  background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);
+  border-radius:var(--r-lg);color:#fff;transition:all .15s ease;
+}
+.contact-link-item:hover{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.18)}
+.contact-link-icon{width:34px;height:34px;border-radius:var(--r-md);background:rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.contact-link-icon svg{width:16px;height:16px}
+.contact-link-label{font-size:11px;color:rgba(255,255,255,.4);font-weight:400}
+.contact-link-val{font-size:14px;color:#fff;font-weight:500}
+.contact-actions{display:flex;flex-direction:column;gap:10px}
+.cta-block{
+  display:flex;align-items:center;justify-content:center;gap:10px;
+  padding:14px 20px;border-radius:var(--r-lg);font-size:14px;font-weight:600;
+  transition:all .15s ease;
+}
+.cta-primary{background:var(--primary-600);color:#fff;box-shadow:0 4px 14px rgba(68,76,231,.35)}
+.cta-primary:hover{background:var(--primary-700);transform:translateY(-2px)}
+.cta-outline{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.2)}
+.cta-outline:hover{background:rgba(255,255,255,.06)}
+.edu-dark-card{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:var(--r-xl);padding:20px;margin-top:10px}
+.edu-dark-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:rgba(255,255,255,.35);margin-bottom:14px}
+.edu-dark-item{margin-bottom:12px}
+.edu-dark-item:last-child{margin-bottom:0}
+.edu-dark-degree{font-size:14px;font-weight:600;color:#fff}
+.edu-dark-inst{font-size:12px;color:rgba(255,255,255,.45);margin-top:2px}
+
+footer{background:var(--gray-900);border-top:1px solid rgba(255,255,255,.08);padding:20px 24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px}
+.footer-copy{font-size:13px;color:rgba(255,255,255,.35)}
+.footer-links{display:flex;gap:18px}
+.footer-link{font-size:13px;color:rgba(255,255,255,.35);transition:color .15s}
+.footer-link:hover{color:rgba(255,255,255,.75)}
+
+/* ═══════════════════════════════════════════
+   RESPONSIVE — TABLET 1024px
+═══════════════════════════════════════════ */
+@media(max-width:1024px){
+  .nav-links{display:none}
+  .nav-cta{display:none}
+  .nav-hamburger{display:flex}
+  .hero-grid{grid-template-columns:1fr}
+  .hero-card{display:none}
+  .metrics-grid{grid-template-columns:repeat(2,1fr)}
+  .expertise-grid{grid-template-columns:repeat(2,1fr)}
+  .summary-grid{grid-template-columns:1fr}
+  .exp-layout{grid-template-columns:1fr;min-width:0}
+  .exp-sidebar{position:static}
+  .exp-nav{flex-direction:row;flex-wrap:wrap;gap:6px}
+  .exp-nav-btn{width:auto;flex-shrink:0}
+  .finops-grid{grid-template-columns:repeat(4,1fr)}
+  .awards-grid{grid-template-columns:1fr 1fr}
+  .tools-grid{grid-template-columns:1fr 1fr}
+  .certs-grid{grid-template-columns:repeat(2,1fr)}
+  .edu-grid{grid-template-columns:1fr}
+  .contact-grid{grid-template-columns:1fr}
+}
+
+/* ═══════════════════════════════════════════
+   RESPONSIVE — MOBILE 640px
+═══════════════════════════════════════════ */
+@media(max-width:640px){
+  :root{--nav-h:60px}
+  .section{padding:52px 0}
+  .hero{padding:44px 0 40px}
+  .hero-name{font-size:34px}
+  .hero-tagline{font-size:16px}
+  .metrics-grid{grid-template-columns:1fr 1fr}
+  .expertise-grid{grid-template-columns:1fr}
+  .finops-grid{grid-template-columns:repeat(2,1fr)}
+  .awards-grid{grid-template-columns:1fr}
+  .tools-grid{grid-template-columns:1fr}
+  .certs-grid{grid-template-columns:1fr}
+  .section-title{font-size:24px}
+  .section{overflow:hidden}
+  .job-card-header{flex-direction:column;padding:16px}
+  .job-card-header > div{min-width:0;max-width:100%}
+  .job-company{font-size:16px;word-break:break-word;overflow-wrap:break-word}
+  .job-body{padding:16px;word-break:break-word;overflow-wrap:break-word}
+  .story-card{max-width:100%;overflow:hidden}
+  .story-rows{min-width:0;gap:0}
+  .exp-nav{flex-direction:column;gap:4px}
+  .exp-nav-btn{font-size:13px;padding:9px 12px;width:100%}
+  .exp-nav-meta{margin-left:auto}
+  .exp-sidebar{max-width:100%;overflow:visible}
+  .story-row{display:block;padding:10px 0}
+  .story-label{white-space:normal;width:100%;min-width:unset;font-size:12px;margin-bottom:4px;flex-shrink:unset}
+  .finops-grid{grid-template-columns:repeat(2,1fr)}
+  .contact-grid{gap:36px}
+  .contact-title{font-size:24px}
+  .contact-link-val{word-break:break-all;font-size:13px}
+  .container{padding:0 16px}
+  .nav-inner{padding:0 16px}
+  footer{flex-direction:column;align-items:flex-start;gap:8px}
+  .hero-contacts{gap:10px}
+  .hero-contact-link{word-break:break-all}
+}
+@media(max-width:400px){
+  .metrics-grid{grid-template-columns:1fr}
+  .finops-grid{grid-template-columns:repeat(2,1fr)}
+  .hero-actions{flex-direction:column}
+  .hero-actions .btn{width:100%;justify-content:center}
+  .hero-actions p{width:100%;box-sizing:border-box}
+  .hero-name{font-size:28px}
+}
+</style>
+</head>
+<body>
+
+<!-- ═══ NAVIGATION ═══ -->
+<nav class="nav" role="navigation" aria-label="Main navigation">
+  <div class="nav-inner">
+    <a href="#" class="nav-brand" aria-label="Amit Aggarwal home">
+      <div class="nav-avatar" aria-hidden="true">AA</div>
+      <div class="nav-brand-text">
+        <span class="nav-brand-name">Amit Aggarwal</span>
+        <span class="nav-brand-role">Product Leader</span>
+      </div>
+    </a>
+    <div class="nav-links" aria-label="Desktop navigation">
+      <a href="#summary" class="nav-link">About</a>
+      <a href="#impact" class="nav-link">Impact</a>
+      <a href="#expertise" class="nav-link">Expertise</a>
+      <a href="#experience" class="nav-link">Experience</a>
+      <a href="#tools" class="nav-link">Tools</a>
+    </div>
+    <a href="#contact" class="nav-cta">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+      Let's Connect
+    </a>
+    <button class="nav-hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- Mobile Nav -->
+<div class="nav-mobile" id="mobileNav" role="menu">
+  <a href="#summary" class="nav-mobile-link" role="menuitem">About</a>
+  <a href="#impact" class="nav-mobile-link" role="menuitem">Impact</a>
+  <a href="#expertise" class="nav-mobile-link" role="menuitem">Expertise</a>
+  <a href="#experience" class="nav-mobile-link" role="menuitem">Experience</a>
+  <a href="#tools" class="nav-mobile-link" role="menuitem">Tools</a>
+  <a href="#contact" class="nav-mobile-cta" role="menuitem">Let's Connect</a>
+</div>
+
+<main class="page">
+
+<!-- ═══ HERO ═══ -->
+<section class="hero" id="home" aria-label="Introduction">
+  <div class="container">
+    <div class="hero-grid">
+      <div>
+        <div class="hero-eyebrow-wrap anim-1">
+          <span class="badge badge-live">Available for new opportunities</span>
+          <span class="badge badge-blue">Enterprise SaaS</span>
+          <span class="badge badge-amber">Agentic Workflows </span>
+        </div>
+        <h1 class="hero-name anim-2">Amit <em>Aggarwal</em></h1>
+        <p class="hero-tagline anim-3">Product Leader · AI-Driven Experiences · Enterprise SaaS</p>
+        <p class="hero-desc anim-4">
+          More than a decade building and scaling enterprise B2B SaaS products across FinOps, Cloud Infrastructure, Digital Marketing, Employee Compliance, Healthcare, Banking, and Retail. From first customer conversation to GTM and scaled adoption, I own the full product lifecycle.
+        </p>
+        <div class="hero-actions anim-4">
+          <a href="#experience" class="btn btn-primary btn-lg">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+            View Experience
+          </a>
+          <a href="https://www.amazon.in/FinOps-Efficiency-Mentoring-Professionals-Productivity/dp/9355512635" target="_blank" rel="noopener" class="btn btn-secondary-outline btn-lg">📘 FinOps Book</a>
+          <a href="https://topmate.io/amit_aggarwal10" target="_blank" rel="noopener" class="btn btn-secondary-outline btn-lg">🎓 Topmate Mentor</a>
+        </div>
+	
+        <div class="hero-contacts anim-5">
+          <a href="https://www.linkedin.com/in/amit-aggarwal-1458434b/" target="_blank" rel="noopener" class="hero-contact-link" aria-label="LinkedIn profile">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+            LinkedIn
+          </a>
+          <a href="mailto:amitflexera.ai@gmail.com" class="hero-contact-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            amitflexera.ai@gmail.com
+          </a>
+          <a href="tel:+919811238573" class="hero-contact-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2.18h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            +91-9811238573
+          </a>
+        </div>
+      </div>
+
+      <!-- Hero stat card -->
+      <div class="hero-card anim-3" aria-label="Quick stats">
+        <div class="hero-card-profile">
+          <div class="hero-card-avatar" aria-hidden="true">AA</div>
+          <div>
+            <div class="hero-card-name">Amit Aggarwal</div>
+            <div class="hero-card-role">Sr. Product Manager · Flexera</div>
+          </div>
+        </div>
+        <div class="hero-stats-grid">
+          <div class="hero-stat"><div class="hero-stat-num">14<b>+</b></div><div class="hero-stat-label">Years Experience</div></div>
+          <div class="hero-stat"><div class="hero-stat-num">10<b>K+</b></div><div class="hero-stat-label">Customers Onboarded</div></div>
+          <div class="hero-stat"><div class="hero-stat-num">$1<b>M+</b></div><div class="hero-stat-label">Customer Savings</div></div>
+          <div class="hero-stat"><div class="hero-stat-num">20<b>%</b></div><div class="hero-stat-label">Reduction in Cloud Spend</div></div>
+        </div>
+        <div class="hero-chips">
+          <span class="badge badge-blue">Agentic AI</span>
+          <span class="badge badge-blue">AI Ways of working</span>
+          <span class="badge badge-green">Scaling Enterprise SaaS </span>
+          <span class="badge badge-amber">Published Author</span>
+          <span class="badge badge-blue">Topmate Mentor</span>
+          <span class="badge badge-green">FinOps</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ PROFESSIONAL SUMMARY ═══ 
+<section class="section section-white" id="summary" aria-labelledby="summary-title">
+  <div class="container">
+    <div class="section-header">
+      <div class="eyebrow">About</div>
+      <h2 class="section-title" id="summary-title">Professional Skills</h2>
+      <p class="section-desc">What I bring to a product leadership role.</p>
+    </div>
+    <div class="summary-grid">
+      <div class="summary-item">
+        <span class="summary-icon">🗺️</span>
+        <div>
+          <div class="summary-item-title">Product Strategy</div>
+          <div class="summary-item-desc"></div>
+        </div>
+      </div>
+      <div class="summary-item">
+        <span class="summary-icon">📍</span>
+        <div>
+          <div class="summary-item-title">Product Roadmap</div>
+          <div class="summary-item-desc"></div>
+        </div>
+      </div>
+      <div class="summary-item">
+        <span class="summary-icon">🎯</span>
+        <div>
+          <div class="summary-item-title">Prioritization</div>
+          <div class="summary-item-desc"></div>
+        </div>
+      </div>
+      <div class="summary-item">
+        <span class="summary-icon">🔁</span>
+        <div>
+          <div class="summary-item-title">End-to-End Product Lifecycle</div>
+          <div class="summary-item-desc"></div>
+        </div>
+      </div>
+      <div class="summary-item">
+        <span class="summary-icon">🧭</span>
+        <div>
+          <div class="summary-item-title">Customer Champion</div>
+          <div class="summary-item-desc"></div>
+        </div>
+      </div>
+      <div class="summary-item">
+        <span class="summary-icon">🤖</span>
+        <div>
+          <div class="summary-item-title">AI-Driven Product Development</div>
+          <div class="summary-item-desc"></div>
+        </div>
+      </div>
+      <div class="summary-item">
+        <span class="summary-icon">📊</span>
+        <div>
+          <div class="summary-item-title">Analytics &amp; Data Platform</div>
+          <div class="summary-item-desc"></div>
+        </div>
+      </div>
+      <div class="summary-item">
+        <span class="summary-icon">🤝</span>
+        <div>
+          <div class="summary-item-title">Cross-Functional Leadership</div>
+          <div class="summary-item-desc"></div>
+        </div>
+      </div>
+      <div class="summary-item">
+        <span class="summary-icon">🔍</span>
+        <div>
+          <div class="summary-item-title">Competitive Intelligence</div>
+          <div class="summary-item-desc"></div>
+        </div>
+      </div>
+    </div>
+    <div style="margin-top:24px;padding:18px 20px;background:var(--primary-50);border:1px solid var(--primary-100);border-radius:var(--r-lg)">
+      <p style="font-size:14px;color:var(--primary-700);font-weight:500;line-height:1.7">
+        🎯 Targeting roles as <strong>Director of Product Management, Principal PM, or Head of Product</strong> — open to people manager and senior IC tracks.
+      </p>
+    </div>
+  </div>
+</section> -->
+
+<!-- ═══ IMPACT METRICS ═══ -->
+<section class="section section-gray" id="impact" aria-labelledby="impact-title" style="background:#f8fafc;">
+  <div class="container">
+   
+    <div class="section-header">
+      <div class="eyebrow">Impact</div>
+      <h2 class="section-title" id="impact-title">Outcomes at Scale</h2>
+      <p class="section-desc">Quantifiable business outcomes delivered across 14+ years of product leadership.</p>
+    </div>
+
+   <!-- <div class="section-header" style="text-align:center; max-width:700px; margin:0 auto 40px;">
+      <div class="eyebrow" style="color:#6366f1; font-weight:600;">Impact</div>
+      <h2 class="section-title" id="impact-title" style="font-size:32px; font-weight:700; margin:10px 0;">
+        Outcomes at Scale
+      </h2>
+      <p class="section-desc" style="color:#6b7280;">
+        Quantifiable business outcomes delivered across 14+ years of product leadership.
+      </p>
+    </div>-->
+
+    <div class="metrics-grid" role="list" style="display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:20px;">
+
+      <!-- Card -->
+      <div class="metric-card" role="listitem" style="background:#fff; padding:18px; border-radius:16px; box-shadow:0 4px 20px rgba(0,0,0,0.06);">
+        <div style="display:flex; align-items:center; gap:12px;">
+          <div style="font-size:20px;">🌍</div>
+          <div style="font-size:26px; font-weight:700;">10K+</div>
+        </div>
+        <div style="margin-top:6px; font-size:14px; color:#6b7280;">
+          Customers served through scalable product platforms
+        </div>
+      </div>
+
+      <div class="metric-card" role="listitem" style="background:#fff; padding:18px; border-radius:16px; box-shadow:0 4px 20px rgba(0,0,0,0.06);">
+        <div style="display:flex; align-items:center; gap:12px;">
+          <div style="font-size:20px;">👥</div>
+          <div style="font-size:26px; font-weight:700;">20+</div>
+        </div>
+        <div style="margin-top:6px; font-size:14px; color:#6b7280;">
+          Product managers led and mentored across teams
+        </div>
+      </div>
+
+      <div class="metric-card" role="listitem" style="background:#fff; padding:18px; border-radius:16px; box-shadow:0 4px 20px rgba(0,0,0,0.06);">
+        <div style="display:flex; align-items:center; gap:12px;">
+          <div style="font-size:20px;">🤖</div>
+          <div style="font-size:26px; font-weight:700;">4+</div>
+        </div>
+        <div style="margin-top:6px; font-size:14px; color:#6b7280;">
+          0→1 AI and GenAI product solutions launched
+        </div>
+      </div>
+
+      <div class="metric-card" role="listitem" style="background:#fff; padding:18px; border-radius:16px; box-shadow:0 4px 20px rgba(0,0,0,0.06);">
+        <div style="display:flex; align-items:center; gap:12px;">
+          <div style="font-size:20px;">🧩</div>
+          <div style="font-size:26px; font-weight:700;">25+</div>
+        </div>
+        <div style="margin-top:6px; font-size:14px; color:#6b7280;">
+          Tools orchestrated across cloud, analytics, and product ecosystems
+        </div>
+      </div>
+
+      <div class="metric-card" role="listitem" style="background:#fff; padding:18px; border-radius:16px; box-shadow:0 4px 20px rgba(0,0,0,0.06);">
+        <div style="display:flex; align-items:center; gap:12px;">
+          <div style="font-size:20px;">🧭</div>
+          <div style="font-size:26px; font-weight:700;">5+</div>
+        </div>
+        <div style="margin-top:6px; font-size:14px; color:#6b7280;">
+          Enterprise product strategies and roadmaps defined
+        </div>
+      </div>
+
+      <div class="metric-card" role="listitem" style="background:#fff; padding:18px; border-radius:16px; box-shadow:0 4px 20px rgba(0,0,0,0.06);">
+        <div style="display:flex; align-items:center; gap:12px;">
+          <div style="font-size:20px;">🤝</div>
+          <div style="font-size:26px; font-weight:700;">2+</div>
+        </div>
+        <div style="margin-top:6px; font-size:14px; color:#6b7280;">
+          Strategic partner-led GTM motions executed
+        </div>
+      </div>
+
+      <div class="metric-card" role="listitem" style="background:#fff; padding:18px; border-radius:16px; box-shadow:0 4px 20px rgba(0,0,0,0.06);">
+        <div style="display:flex; align-items:center; gap:12px;">
+          <div style="font-size:20px;">🏭</div>
+          <div style="font-size:26px; font-weight:700;">7+</div>
+        </div>
+        <div style="margin-top:6px; font-size:14px; color:#6b7280;">
+          Industry verticals served across enterprise domains
+        </div>
+      </div>
+
+      <div class="metric-card" role="listitem" style="background:#fff; padding:18px; border-radius:16px; box-shadow:0 4px 20px rgba(0,0,0,0.06);">
+        <div style="display:flex; align-items:center; gap:12px;">
+          <div style="font-size:20px;">🏆</div>
+          <div style="font-size:26px; font-weight:700;">9+</div>
+        </div>
+        <div style="margin-top:6px; font-size:14px; color:#6b7280;">
+          Industry certifications earned across cloud and product domains
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- 
+<section class="section section-gray" id="impact" aria-labelledby="impact-title">
+  <div class="container">
+    <div class="section-header">
+      <div class="eyebrow">Impact</div>
+      <h2 class="section-title" id="impact-title">Outcomes at Scale</h2>
+      <p class="section-desc">Quantifiable business outcomes delivered across 14+ years of product leadership.</p>
+    </div>
+
+    <div class="metrics-grid" role="list">
+
+      <div class="metric-card" role="listitem" style="padding:16px;">
+        <div style="display:flex; align-items:center; gap:10px;">
+          <div class="metric-icon-wrap" style="margin:0;">🌍</div>
+          <div class="metric-num" style="margin:0;">10<b>K+</b></div>
+        </div>
+        <div class="metric-label">Customers served through scalable product platforms</div>
+      </div>
+
+      <div class="metric-card" role="listitem" style="padding:16px;">
+        <div style="display:flex; align-items:center; gap:10px;">
+          <div class="metric-icon-wrap" style="margin:0;">👥</div>
+          <div class="metric-num" style="margin:0;">20<b>+</b></div>
+        </div>
+        <div class="metric-label">Product managers led and mentored across teams</div>
+      </div>
+
+      <div class="metric-card" role="listitem" style="padding:16px;">
+        <div style="display:flex; align-items:center; gap:10px;">
+          <div class="metric-icon-wrap" style="margin:0;">🤖</div>
+          <div class="metric-num" style="margin:0;">4<b>+</b></div>
+        </div>
+        <div class="metric-label">0→1 AI and GenAI product solutions launched</div>
+      </div>
+
+      <div class="metric-card" role="listitem" style="padding:16px;">
+        <div style="display:flex; align-items:center; gap:10px;">
+          <div class="metric-icon-wrap" style="margin:0;">🧩</div>
+          <div class="metric-num" style="margin:0;">25<b>+</b></div>
+        </div>
+        <div class="metric-label">Tools orchestrated across cloud, analytics, and product ecosystems</div>
+      </div>
+
+      <div class="metric-card" role="listitem" style="padding:16px;">
+        <div style="display:flex; align-items:center; gap:10px;">
+          <div class="metric-icon-wrap" style="margin:0;">🧭</div>
+          <div class="metric-num" style="margin:0;">5<b>+</b></div>
+        </div>
+        <div class="metric-label">Enterprise product strategies and roadmaps defined</div>
+      </div>
+
+      <div class="metric-card" role="listitem" style="padding:16px;">
+        <div style="display:flex; align-items:center; gap:10px;">
+          <div class="metric-icon-wrap" style="margin:0;">🤝</div>
+          <div class="metric-num" style="margin:0;">2<b>+</b></div>
+        </div>
+        <div class="metric-label">Strategic partner-led GTM motions executed</div>
+      </div>
+
+      <div class="metric-card" role="listitem" style="padding:16px;">
+        <div style="display:flex; align-items:center; gap:10px;">
+          <div class="metric-icon-wrap" style="margin:0;">🏭</div>
+          <div class="metric-num" style="margin:0;">7<b>+</b></div>
+        </div>
+        <div class="metric-label">Industry verticals served across enterprise domains</div>
+      </div>
+
+      <div class="metric-card" role="listitem" style="padding:16px;">
+        <div style="display:flex; align-items:center; gap:10px;">
+          <div class="metric-icon-wrap" style="margin:0;">🏆</div>
+          <div class="metric-num" style="margin:0;">9<b>+</b></div>
+        </div>
+        <div class="metric-label">Industry certifications earned across cloud and product domains</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+<section class="section section-gray" id="impact" aria-labelledby="impact-title">
+  <div class="container">
+    <div class="section-header">
+      <div class="eyebrow">Impact</div>
+      <h2 class="section-title" id="impact-title">Outcomes at Scale</h2>
+      <p class="section-desc">Quantifiable business outcomes delivered across 14+ years of product leadership.</p>
+    </div>
+
+    <div class="metrics-grid" role="list">
+
+      <div class="metric-card" role="listitem">
+        <div>
+          <span class="metric-icon-wrap">🌍</span>
+          <span class="metric-num">10<b>K+</b></span>
+        </div>
+        <div class="metric-label">Customers served through scalable product platforms</div>
+      </div>
+
+      <div class="metric-card" role="listitem">
+        <div>
+          <span class="metric-icon-wrap">👥</span>
+          <span class="metric-num">20<b>+</b></span>
+        </div>
+        <div class="metric-label">Product managers led and mentored across teams</div>
+      </div>
+
+      <div class="metric-card" role="listitem">
+        <div>
+          <span class="metric-icon-wrap">🤖</span>
+          <span class="metric-num">4<b>+</b></span>
+        </div>
+        <div class="metric-label">0→1 AI and GenAI product solutions launched</div>
+      </div>
+
+      <div class="metric-card" role="listitem">
+        <div>
+          <span class="metric-icon-wrap">🧩</span>
+          <span class="metric-num">25<b>+</b></span>
+        </div>
+        <div class="metric-label">Tools orchestrated across cloud, analytics, and product ecosystems</div>
+      </div>
+
+      <div class="metric-card" role="listitem">
+        <div>
+          <span class="metric-icon-wrap">🧭</span>
+          <span class="metric-num">5<b>+</b></span>
+        </div>
+        <div class="metric-label">Enterprise product strategies and roadmaps defined</div>
+      </div>
+
+      <div class="metric-card" role="listitem">
+        <div>
+          <span class="metric-icon-wrap">🤝</span>
+          <span class="metric-num">2<b>+</b></span>
+        </div>
+        <div class="metric-label">Strategic partner-led GTM motions executed</div>
+      </div>
+
+      <div class="metric-card" role="listitem">
+        <div>
+          <span class="metric-icon-wrap">🏭</span>
+          <span class="metric-num">7<b>+</b></span>
+        </div>
+        <div class="metric-label">Industry verticals served across enterprise domains</div>
+      </div>
+
+      <div class="metric-card" role="listitem">
+        <div>
+          <span class="metric-icon-wrap">🏆</span>
+          <span class="metric-num">9<b>+</b></span>
+        </div>
+        <div class="metric-label">Industry certifications earned across cloud and product domains</div>
+      </div>
+
+    </div>
+  </div>
+</section> -->
+
+<!-- ═══ EXPERTISE ═══ -->
+<section class="section section-white" id="expertise" aria-labelledby="expertise-title">
+  <div class="container">
+    <div class="section-header">
+      <div class="eyebrow">Expertise</div>
+      <h2 class="section-title" id="expertise-title">What I bring to the table</h2>
+      <p class="section-desc">Core strengths built across 14 years of product leadership in complex enterprise environments.</p>
+    </div>
+    <div class="expertise-grid">
+      <div class="exp-card">
+        <div class="exp-card-icon">🗺️</div>
+        <div class="exp-card-title">Product Strategy &amp; Roadmap</div>
+        <div class="exp-card-desc">I don’t just define product strategy, I translate market insight into execution. 5+ B2B products scaled through roadmaps that align vision, value, and velocity.</div>
+      </div>
+      <div class="exp-card">
+        <div class="exp-card-icon">🤖</div>
+        <div class="exp-card-title">AI &amp; Agentic Product Development</div>
+        <div class="exp-card-desc">I’ve shipped GenAI and Agentic AI in real-world environments.Currently building autonomous agents with GitHub Copilot to accelerate delivery cycles.</div>
+      </div>
+      <div class="exp-card">
+        <div class="exp-card-icon">☁️</div>
+        <div class="exp-card-title">Diversified Domain Expertise</div>
+        <div class="exp-card-desc">I bring cross-industry product leadership, quickly ramping across FinOps, Cloud, Banking, Healthcare, Retail, and Compliance to drive meaningful outcomes.</div>
+      </div>
+      <div class="exp-card">
+        <div class="exp-card-icon">📊</div>
+        <div class="exp-card-title">Analytics &amp; Data Platforms</div>
+        <div class="exp-card-desc">I build with data at the core—crafting pipelines, governance, and embedded analytics that power decisions, from scorecards to cost visibility.</div>
+      </div>
+      <div class="exp-card">
+        <div class="exp-card-icon">🚀</div>
+        <div class="exp-card-title">GTM &amp; Customer Adoption</div>
+        <div class="exp-card-desc">I drive GTM for complex products, onboarding partners like Accenture, leading CloudCheckr migrations, and enabling enterprise customers end-to-end.</div>
+      </div>
+      <div class="exp-card">
+        <div class="exp-card-icon">👥</div>
+        <div class="exp-card-title">People Leadership &amp; Mentorship</div>
+        <div class="exp-card-desc">I don’t just build products, I build PMs. Leading teams through coaching, mentorship, and career growth, with recognition from the CPO for impact.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ EXPERIENCE ═══ -->
+<section class="section section-gray" id="experience" aria-labelledby="exp-title">
+  <div class="container">
+    <div class="section-header">
+      <div class="eyebrow">Experience</div>
+      <h2 class="section-title" id="exp-title">14 years of product leadership</h2>
+      <p class="section-desc">A track record built across enterprise SaaS, FinOps, AI, Banking, Healthcare, and Digital Marketing.</p>
+    </div>
+
+    <div class="exp-layout">
+      <!-- Sidebar -->
+      <nav class="exp-sidebar" aria-label="Job navigation">
+        <div class="exp-nav" role="tablist">
+          <button class="exp-nav-btn active" onclick="focusJob('flexera',this)" role="tab" aria-selected="true">
+            <span class="exp-nav-dot" aria-hidden="true"></span>
+            Flexera
+            <span class="exp-nav-meta">2024–Now</span>
+          </button>
+          <button class="exp-nav-btn" onclick="focusJob('milestone',this)" role="tab" aria-selected="false">
+            <span class="exp-nav-dot" aria-hidden="true"></span>
+            Milestone Inc.
+            <span class="exp-nav-meta">2022–24</span>
+          </button>
+          <button class="exp-nav-btn" onclick="focusJob('hcl',this)" role="tab" aria-selected="false">
+            <span class="exp-nav-dot" aria-hidden="true"></span>
+            HCL Software
+            <span class="exp-nav-meta">2021–22</span>
+          </button>
+          <button class="exp-nav-btn" onclick="focusJob('deutsche',this)" role="tab" aria-selected="false">
+            <span class="exp-nav-dot" aria-hidden="true"></span>
+            Deutsche Bank
+            <span class="exp-nav-meta">2017–21</span>
+          </button>
+          <button class="exp-nav-btn" onclick="focusJob('tcs',this)" role="tab" aria-selected="false">
+            <span class="exp-nav-dot" aria-hidden="true"></span>
+            TCS
+            <span class="exp-nav-meta">2010–17</span>
+          </button>
+        </div>
+      </nav>
+
+      <!-- Job Cards -->
+      <div class="job-cards">
+
+        <!-- ── FLEXERA ── -->
+        
+		
+		
+		<article class="job-card" id="flexera" aria-label="Flexera job details">
+          <div class="job-card-header">
+            <div>
+              <div class="job-company">Flexera</div>
+              <div class="job-role">Senior Product Manager — Cloud Operations</div>
+              <div class="job-meta-row">
+                <span class="job-meta-item">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                  Bengaluru
+                </span>
+                <span class="job-meta-item">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                  Mar 2024 – Present
+                </span>
+              </div>
+            </div>
+            <span class="badge badge-live">Current Role</span>
+          </div>
+
+          <div class="job-body">
+            <p style="font-size:14px;color:var(--gray-500);line-height:1.75;margin-bottom:20px">
+              Leading product strategy, roadmap, and a team of 5 PMs across Flexera's FinOps portfolio. Responsible for two distinct personas - <strong style="color:var(--gray-700)">enterprise customers</strong> and <strong style="color:var(--gray-700)">partner ecosystem</strong> across a single deeply integrated FinOps platform. Full ownership from discovery to delivery with direct C-suite visibility.
+            </p>
+
+            <!-- FinOps Portfolio -->
+            <div class="sub-title">FinOps Product Portfolio — End-to-End Coverage</div>
+            <div class="finops-grid" role="list">
+              <div class="finops-cap" role="listitem"><span class="finops-cap-icon" aria-hidden="true">💰</span><span class="finops-cap-label">Budgeting</span></div>
+              <div class="finops-cap" role="listitem"><span class="finops-cap-icon" aria-hidden="true">📈</span><span class="finops-cap-label">Forecasting</span></div>
+              <div class="finops-cap" role="listitem"><span class="finops-cap-icon" aria-hidden="true">💡</span><span class="finops-cap-label">Recommendations</span></div>
+              <div class="finops-cap" role="listitem"><span class="finops-cap-icon" aria-hidden="true">⚙️</span><span class="finops-cap-label">Enterprise Adjustments</span></div>
+              <div class="finops-cap" role="listitem"><span class="finops-cap-icon" aria-hidden="true">📊</span><span class="finops-cap-label">Dashboards</span></div>
+              <div class="finops-cap" role="listitem"><span class="finops-cap-icon" aria-hidden="true">📋</span><span class="finops-cap-label">Reporting</span></div>
+              <div class="finops-cap" role="listitem"><span class="finops-cap-icon" aria-hidden="true">🗂️</span><span class="finops-cap-label">Inventory</span></div>
+              <div class="finops-cap" role="listitem"><span class="finops-cap-icon" aria-hidden="true">🔔</span><span class="finops-cap-label">Alerts &amp; Notifications</span></div>
+            </div>
+            <div class="pills-row">
+              <span class="outcome-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>10,000+ customers onboarded</span>
+              <span class="outcome-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>$1M+ total customer savings</span>
+              <span class="outcome-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>~20% avg. anomaly savings</span>
+            </div>
+
+         
+			<div class="sub-title">Flagship GTM Case Studies</div>
+
+<div class="story-card" style="padding:14px 16px; border-radius:14px;">
+
+  <!-- HEADER -->
+  <div class="story-card-title" style="margin-bottom:6px; font-size:15px; font-weight:600;">
+    Flexera’s First FinOps MSP Partner - Accenture
+    <span class="badge badge-blue" style="font-size:11px;">GTM Win</span>
+  </div>
+
+  <!-- CONTEXT -->
+  <div style="font-size:13px; color:var(--gray-500); margin-bottom:10px; line-height:1.5;">
+    First strategic partner in Flexera’s FinOps journey, establishing the foundation for scaling the partner ecosystem.
+  </div>
+
+  <div class="story-rows" style="border-top:1px solid #e5e7eb;">
+
+    <!-- CHALLENGE -->
+    <div class="story-row" style="border-bottom:1px solid #f1f5f9; ">
+      <div class="story-label" style="display:block;font-size:12.5px; ">
+        ⚠️ Challenge
+      </div>
+      <div style="font-size:12.5px; color:var(--gray-600);">
+        Complex billing structures, deep hierarchies, and multiple FinOps tools requiring highly accurate financial reconciliation.
+      </div>
+    </div>
+
+    <!-- DISCOVERY -->
+    <div class="story-row" style="border-bottom:1px solid #f1f5f9; ">
+      <div class="story-label" style="display:block;font-size:12.5px; ">
+        🔍 Discovery
+      </div>
+      <div style="font-size:12.5px; color:var(--gray-600);">
+        Mapped end-to-end partner ecosystem and billing flows to identify gaps in product capabilities and underlying data model.
+      </div>
+    </div>
+
+    <!-- EXECUTION -->
+    <div class="story-row" style="border-bottom:1px solid #f1f5f9; ">
+      <div class="story-label" style="display:block;font-size:12.5px; ">
+        ⚙️ Execution
+      </div>
+      <div style="font-size:12.5px; color:var(--gray-600);">
+        Prioritized and built new platform capabilities, prototyped solutions, and iterated with partner feedback to deliver within six months.
+      </div>
+    </div>
+
+    <!-- OUTCOME -->
+    <div class="story-row">
+      <div class="story-label" style="display:block;font-size:12.5px; ">
+        🏆 Outcome
+      </div>
+      <div style="font-size:12.5px; color:var(--gray-700); font-weight:600;">
+        Successfully onboarded Accenture as a partner within six months, including their 1,400 customer orgs, and recognized at a company-wide event, establishing the product and data foundation for Flexera’s partner ecosystem strategy.
+      </div>
+    </div>
+
+  </div>
+
+  <!-- IMAGE GALLERY -->
+  <div style="margin-top:10px; border-top:1px solid #e5e7eb; padding-top:8px;">
+    <div style="font-size:11.5px; color:var(--gray-400); margin-bottom:6px;">
+      Execution snapshots
+    </div>
+
+    <div style="display:flex; gap:8px; overflow-x:auto;">
+
+      <div style="min-width:120px; height:80px; background:#f1f5f9; border-radius:8px; display:flex; align-items:center; justify-content:center; font-size:11px; color:#94a3b8;">
+        Image
+      </div>
+
+      <div style="min-width:120px; height:80px; background:#f1f5f9; border-radius:8px; display:flex; align-items:center; justify-content:center; font-size:11px; color:#94a3b8;">
+        Image
+      </div>
+
+      <div style="min-width:120px; height:80px; background:#f1f5f9; border-radius:8px; display:flex; align-items:center; justify-content:center; font-size:11px; color:#94a3b8;">
+        Image
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+<div class="story-card" style="padding:14px 16px; border-radius:14px; margin-top:12px;">
+
+  <!-- HEADER -->
+  <div class="story-card-title" style="margin-bottom:6px; font-size:15px; font-weight:600;">
+    CloudCheckr Acquisition — Customer Migration & Platform Consolidation
+    <span class="badge badge-blue" style="font-size:11px;">GTM Win</span>
+  </div>
+
+  <!-- CONTEXT -->
+  <div style="font-size:13px; color:var(--gray-500); margin-bottom:10px; line-height:1.5;">
+    Migrated 10K+ Partners and Customers from CloudCheckr to Flexera, ensuring continuity and full billing capability alignment.
+  </div>
+
+  <div class="story-rows" style="border-top:1px solid #e5e7eb;">
+
+    <!-- CHALLENGE -->
+    <div class="story-row" style="border-bottom:1px solid #f1f5f9; ">
+      <div class="story-label" style="display:block;font-size:12.5px; ">
+        ⚠️ Challenge
+      </div>
+      <div style="font-size:12.5px; color:var(--gray-600);">
+        Migrate enterprise customers with complex billing setups while ensuring zero disruption and complete feature parity.
+      </div>
+    </div>
+
+    <!-- DISCOVERY -->
+    <div class="story-row" style="border-bottom:1px solid #f1f5f9; ">
+      <div class="story-label" style="display:block;font-size:12.5px; ">
+        🔍 Discovery
+      </div>
+      <div style="font-size:12.5px; color:var(--gray-600);">
+        Conducted structured gap analysis using product usage data to identify critical capabilities required for migration.
+      </div>
+    </div>
+
+    <!-- EXECUTION -->
+    <div class="story-row" style="border-bottom:1px solid #f1f5f9; ">
+      <div class="story-label" style="display:block;font-size:12.5px; ">
+        ⚙️ Execution
+      </div>
+      <div style="font-size:12.5px; color:var(--gray-600);">
+        Delivered billing parity supporting mulit-tier model for distributor, reseller and end cosumer, billing plans, billing history, and billing explorer while coordinating across product, engineering, data, and GTM teams.
+      </div>
+    </div>
+
+    <!-- OUTCOME -->
+    <div class="story-row">
+      <div class="story-label" style="display:block;font-size:12.5px; ">
+        🏆 Outcome
+      </div>
+      <div style="font-size:12.5px; color:var(--gray-700); font-weight:600;">
+        Successfully migrated 10K+ customers with zero disruption and established a unified billing experience on Flexera’s platform.
+      </div>
+    </div>
+
+  </div>
+
+  <!-- IMAGE GALLERY -->
+  <div style="margin-top:10px; border-top:1px solid #e5e7eb; padding-top:8px;">
+    <div style="font-size:11.5px; color:var(--gray-400); margin-bottom:6px;">
+      Migration snapshots
+    </div>
+
+    <div style="display:flex; gap:8px; overflow-x:auto;">
+
+      <div style="min-width:120px; height:80px; background:#f1f5f9; border-radius:8px; display:flex; align-items:center; justify-content:center; font-size:11px; color:#94a3b8;">
+        Image
+      </div>
+
+      <div style="min-width:120px; height:80px; background:#f1f5f9; border-radius:8px; display:flex; align-items:center; justify-content:center; font-size:11px; color:#94a3b8;">
+        Image
+      </div>
+
+      <div style="min-width:120px; height:80px; background:#f1f5f9; border-radius:8px; display:flex; align-items:center; justify-content:center; font-size:11px; color:#94a3b8;">
+        Image
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+<div class="sub-title">Core Capabilities & Impact</div>
+
+<div class="story-card" style="padding:14px 16px; border-radius:14px;">
+
+
+
+  <!-- TAGLINE -->
+  <div style="font-size:13px; color:var(--gray-500); margin-bottom:10px; line-height:1.5;">
+    Driving AI led innovation, product strategy, and executive alignment to deliver measurable enterprise outcomes.
+  </div>
+
+  <div class="story-rows" style="border-top:1px solid #e5e7eb;">
+
+    <!-- AI & INNOVATION -->
+    <div class="story-row" style="border-bottom:1px solid #f1f5f9; ">
+      <div class="story-label" style="display:block;font-size:12.5px; ">
+        🤖 AI & Innovation
+      </div>
+      <div style="font-size:12.5px; color:var(--gray-600); line-height:1.5;">
+        Built AI driven FinOps capabilities including forecasting, anomaly detection, and agentic workflows, enabling proactive cost control and reducing manual operational effort.
+      </div>
+    </div>
+
+    <!-- COMPETITIVE INTELLIGENCE -->
+    <div class="story-row" style="border-bottom:1px solid #f1f5f9; ">
+      <div class="story-label" style="display:block;font-size:12.5px; ">
+        🧠 Market Insight
+      </div>
+      <div style="font-size:12.5px; color:var(--gray-600); line-height:1.5;">
+        Analyzed competitors including Anodot, CloudHealth, ServiceNow, Finout, Vantage, and Apptio to refine positioning, influence roadmap decisions, and strengthen competitive differentiation.
+      </div>
+    </div>
+
+    <!-- BUSINESS CASES -->
+    <div class="story-row" style="border-bottom:1px solid #f1f5f9; ">
+      <div class="story-label" style="display:block;font-size:12.5px; ">
+        📊 Executive Buy-In
+      </div>
+      <div style="font-size:12.5px; color:var(--gray-600); line-height:1.5;">
+        Built business cases and presented strategy, roadmap, and outcomes directly to C-suite including CEO, CPO, and CTO, securing alignment and continued product investment.
+      </div>
+    </div>
+
+    <!-- LEADERSHIP -->
+    <div class="story-row">
+      <div class="story-label" style="display:block;font-size:12.5px; ">
+        👥 Leadership
+      </div>
+      <div style="font-size:12.5px; color:var(--gray-600); line-height:1.5;">
+        Led and mentored product managers, improving execution quality, reducing cross team friction, and driving consistent delivery across complex enterprise initiatives.
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+   
+
+            <!-- Awards -->
+            <div class="sub-title">Recognition</div>
+            <div class="awards-grid">
+              <div class="award-item"><div class="award-emoji" aria-hidden="true">🏆</div><div><div class="award-name">Best Flexera India Team Award</div><div class="award-year">2024 &amp; 2025</div></div></div>
+              <div class="award-item"><div class="award-emoji" aria-hidden="true">🥇</div><div><div class="award-name">Reflex Innovation Finalist — Team Won</div><div class="award-year">2024</div></div></div>
+              <div class="award-item"><div class="award-emoji" aria-hidden="true">🎖️</div><div><div class="award-name">Reflex Finalist — Top 7 Company-Wide</div><div class="award-year">2025</div></div></div>
+              <div class="award-item"><div class="award-emoji" aria-hidden="true">⭐</div><div><div class="award-name">Recognized by CPO for Product Innovation &amp; Leadership</div><div class="award-year">2024–2025</div></div></div>
+            </div>
+          </div>
+        </article>
+		
+		<article class="job-card" id="milestone" aria-label="Milestone job details">
+  <div class="job-card-header">
+    <div>
+      <div class="job-company">Milestone Inc.</div>
+      <div class="job-role">Senior Product Manager</div>
+      <div class="job-meta-row">
+        <span class="job-meta-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+            <circle cx="12" cy="10" r="3"/>
+          </svg>
+          Bengaluru
+        </span>
+        <span class="job-meta-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="3" y="4" width="18" height="18" rx="2"/>
+            <line x1="16" y1="2" x2="16" y2="6"/>
+            <line x1="8" y1="2" x2="8" y2="6"/>
+            <line x1="3" y1="10" x2="21" y2="10"/>
+          </svg>
+          Sep 2022 – Feb 2024
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <div class="job-body">
+
+    <div class="blist">
+
+      <div class="bitem" style="display:flex; align-items:flex-start;">
+        <div class="bdot" style="margin-right:10px; margin-top:2px;">🤖</div>
+        <div class="btext">
+          Built and launched an <strong>AI Content Studio</strong> for SEO-optimized automated content creation — scaled from inception to full launch using low-code/no-code frameworks with AI-driven workflows
+        </div>
+      </div>
+
+      <div class="bitem" style="display:flex; align-items:flex-start;">
+        <div class="bdot" style="margin-right:10px; margin-top:2px;">🗄️</div>
+        <div class="btext">
+          Led roadmap for an enterprise <strong>Customer and Performance Data Platform</strong> — defined capabilities across real-time and batch data ingestion, processing pipelines, data governance, and retention policies
+        </div>
+      </div>
+
+      <div class="bitem" style="display:flex; align-items:flex-start;">
+        <div class="bdot" style="margin-right:10px; margin-top:2px;">💰</div>
+        <div class="btext">
+          <strong>Reduced storage costs by 50%</strong> through strategic migration to Azure Data Lake — a data infrastructure decision with direct P&amp;L impact
+        </div>
+      </div>
+
+      <div class="bitem" style="display:flex; align-items:flex-start;">
+        <div class="bdot" style="margin-right:10px; margin-top:2px;">📊</div>
+        <div class="btext">
+          Designed a comprehensive suite of <strong>analytics scorecards</strong> in collaboration with SMEs, SEO experts, and customer success teams — enabling customers to track and act on performance data across business areas
+        </div>
+      </div>
+
+      <div class="bitem" style="display:flex; align-items:flex-start;">
+        <div class="bdot" style="margin-right:10px; margin-top:2px;">💡</div>
+        <div class="btext">
+          Integrated the data platform with an AI layer for <strong>sentiment analysis</strong>, transforming raw customer feedback into structured, actionable insights
+        </div>
+      </div>
+
+    </div>
+
+    <div class="pills-row">
+      <span class="outcome-pill">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <polyline points="20 6 9 17 4 12"/>
+        </svg>
+        50% storage cost reduction
+      </span>
+      <span class="outcome-pill">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <polyline points="20 6 9 17 4 12"/>
+        </svg>
+        AI Content Studio — 0 to launch
+      </span>
+    </div>
+
+  </div>
+</article>
+
+<article class="job-card" id="hcl" aria-label="HCL Software job details">
+  <div class="job-card-header">
+    <div>
+      <div class="job-company">DRYiCE, HCL Software</div>
+      <div class="job-role">Product Manager</div>
+      <div class="job-meta-row">
+        <span class="job-meta-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+            <circle cx="12" cy="10" r="3"/>
+          </svg>
+          Noida
+        </span>
+        <span class="job-meta-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="3" y="4" width="18" height="18" rx="2"/>
+            <line x1="16" y1="2" x2="16" y2="6"/>
+            <line x1="8" y1="2" x2="8" y2="6"/>
+            <line x1="3" y1="10" x2="21" y2="10"/>
+          </svg>
+          Sep 2021 – Aug 2022
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <div class="job-body">
+    <div class="blist">
+
+      <div class="bitem" style="display:flex; align-items:flex-start;">
+        <div class="bdot" style="margin-right:10px; margin-top:2px;">🚀</div>
+        <div class="btext">Led product roadmap for <strong>MyXalytics</strong> spanning cost visibility, optimization, and governance</div>
+      </div>
+
+      <div class="bitem" style="display:flex; align-items:flex-start;">
+        <div class="bdot" style="margin-right:10px; margin-top:2px;">🏆</div>
+        <div class="btext">Drove platform validation as a <strong>FinOps Certified Platform</strong> by FinOps.org</div>
+      </div>
+
+      <div class="bitem" style="display:flex; align-items:flex-start;">
+        <div class="bdot" style="margin-right:10px; margin-top:2px;">⭐</div>
+        <div class="btext">Recognized as a <strong>Rising Star</strong> by ISG Provider Lens</div>
+      </div>
+
+      <div class="bitem" style="display:flex; align-items:flex-start;">
+        <div class="bdot" style="margin-right:10px; margin-top:2px;">📘</div>
+        <div class="btext">Co-authored a published <strong>FinOps book</strong> grounded in real customer pain points</div>
+      </div>
+
+      <div class="bitem" style="display:flex; align-items:flex-start;">
+        <div class="bdot" style="margin-right:10px; margin-top:2px;">🎤</div>
+        <div class="btext">Delivered <strong>60+ product demos</strong> contributing to <strong>15+ enterprise deal wins</strong></div>
+      </div>
+
+      <div class="bitem" style="display:flex; align-items:flex-start;">
+        <div class="bdot" style="margin-right:10px; margin-top:2px;">🧠</div>
+        <div class="btext">Performed competitive analysis across major FinOps tools to shape roadmap positioning</div>
+      </div>
+
+    </div>
+
+    <div class="pills-row">
+      <span class="outcome-pill">FinOps Certified Platform</span>
+      <span class="outcome-pill">15+ enterprise wins</span>
+      <span class="outcome-pill">ISG Rising Star</span>
+    </div>
+  </div>
+</article>
+
+<article class="job-card" id="deutsche" aria-label="Deutsche Bank job details">
+  <div class="job-card-header">
+    <div>
+      <div class="job-company">
+        Deutsche Bank <span style="font-size:13px;color:var(--gray-400)">(via TCS)</span>
+      </div>
+      <div class="job-role">Product Manager / Assistant Consultant</div>
+
+      <div class="job-meta-row">
+        <span class="job-meta-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+            <circle cx="12" cy="10" r="3"/>
+          </svg>
+          London, UK
+        </span>
+
+        <span class="job-meta-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="3" y="4" width="18" height="18" rx="2"/>
+            <line x1="16" y1="2" x2="16" y2="6"/>
+            <line x1="8" y1="2" x2="8" y2="6"/>
+            <line x1="3" y1="10" x2="21" y2="10"/>
+          </svg>
+          Apr 2017 – Aug 2021
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <div class="job-body">
+    <div class="blist">
+
+      <div class="bitem" style="display:flex; align-items:flex-start;">
+        <div class="bdot" style="margin-right:10px; margin-top:2px;">🛡️</div>
+        <div class="btext">Delivered workflow-based compliance and trade surveillance apps improving governance and risk detection</div>
+      </div>
+
+      <div class="bitem" style="display:flex; align-items:flex-start;">
+        <div class="bdot" style="margin-right:10px; margin-top:2px;">🧩</div>
+        <div class="btext">Built self-service, communication surveillance, licensing, and trade surveillance platforms</div>
+      </div>
+
+      <div class="bitem" style="display:flex; align-items:flex-start;">
+        <div class="bdot" style="margin-right:10px; margin-top:2px;">🚨</div>
+        <div class="btext">Developed alerting and analytics framework for detecting suspicious activity and insider trading</div>
+      </div>
+
+      <div class="bitem" style="display:flex; align-items:flex-start;">
+        <div class="bdot" style="margin-right:10px; margin-top:2px;">💰</div>
+        <div class="btext"><strong>Reduced costs by 15%</strong> through automation and data migration initiatives</div>
+      </div>
+
+    </div>
+
+    <div class="pills-row">
+      <span class="outcome-pill">15% cost reduction</span>
+      <span class="outcome-pill">2 B2B apps shipped</span>
+    </div>
+  </div>
+</article>
+
+<article class="job-card" id="tcs" aria-label="TCS job details">
+  <div class="job-card-header">
+    <div>
+      <div class="job-company">Tata Consultancy Services (TCS)</div>
+      <div class="job-role">Business Analyst → System Engineer</div>
+
+      <div class="job-meta-row">
+        <span class="job-meta-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+            <circle cx="12" cy="10" r="3"/>
+          </svg>
+          Gurgaon
+        </span>
+
+        <span class="job-meta-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="3" y="4" width="18" height="18" rx="2"/>
+            <line x1="16" y1="2" x2="16" y2="6"/>
+            <line x1="8" y1="2" x2="8" y2="6"/>
+            <line x1="3" y1="10" x2="21" y2="10"/>
+          </svg>
+          Aug 2010 - Apr 2013 & Apr 2014 – Mar 2017
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <div class="job-body">
+    <div class="blist">
+
+      <div class="bitem" style="display:flex; align-items:flex-start;">
+        <div class="bdot" style="margin-right:10px; margin-top:2px;">📄</div>
+        <div class="btext">Gathered and analyzed requirements for a paperless drug system across US and Canada</div>
+      </div>
+
+      <div class="bitem" style="display:flex; align-items:flex-start;">
+        <div class="bdot" style="margin-right:10px; margin-top:2px;">🗂️</div>
+        <div class="btext">Collaborated with SMEs to build centralized data mapping frameworks</div>
+      </div>
+
+      <div class="bitem" style="display:flex; align-items:flex-start;">
+        <div class="bdot" style="margin-right:10px; margin-top:2px;">🧪</div>
+        <div class="btext">Facilitated UAT and managed stakeholder communication across releases</div>
+      </div>
+
+      <div class="bitem" style="display:flex; align-items:flex-start;">
+        <div class="bdot" style="margin-right:10px; margin-top:2px;">🧮</div>
+        <div class="btext">Built reusable SQL packages improving data access and query performance</div>
+      </div>
+
+      <div class="bitem" style="display:flex; align-items:flex-start;">
+        <div class="bdot" style="margin-right:10px; margin-top:2px;">📊</div>
+        <div class="btext">Designed complex SQL queries for accurate reporting and analytics</div>
+      </div>
+
+    </div>
+  </div>
+</article>
+		
+
+
+      </div><!-- end job-cards -->
+    </div><!-- end exp-layout -->
+  </div>
+</section>
+
+<!-- ═══ TOOLS & STACK ═══ -->
+<section class="section section-white" id="tools" aria-labelledby="tools-title">
+  <div class="container">
+    <div class="section-header">
+      <div class="eyebrow">Tools &amp; Stack</div>
+      <h2 class="section-title" id="tools-title">What I work with</h2>
+      <p class="section-desc">Tools and platforms across AI, product management, analytics, cloud, and infrastructure.</p>
+    </div>
+    <div class="tools-grid">
+      <div class="tool-card">
+        <div class="tool-card-header"><span class="tool-icon" aria-hidden="true">🤖</span><span class="tool-title">AI &amp; Productivity</span></div>
+        <div class="tool-tags">
+          <span class="tool-tag">Claude Code</span><span class="tool-tag">GitHub Copilot</span><span class="tool-tag">Gemini</span>
+          <span class="tool-tag">Lovable</span><span class="tool-tag">MS Copilot</span><span class="tool-tag">Chatgpt</span>
+        </div>
+      </div>
+      <div class="tool-card">
+        <div class="tool-card-header"><span class="tool-icon" aria-hidden="true">🗂️</span><span class="tool-title">Product Management</span></div>
+        <div class="tool-tags">
+          <span class="tool-tag">Jira</span><span class="tool-tag">Aha!</span><span class="tool-tag">Confluence</span>
+          <span class="tool-tag">Miro</span><span class="tool-tag">Dovetail</span><span class="tool-tag">Azure DevOps</span><span class="tool-tag">Figma</span>
+        </div>
+      </div>
+      <div class="tool-card">
+        <div class="tool-card-header"><span class="tool-icon" aria-hidden="true">📊</span><span class="tool-title">Analytics &amp; Data</span></div>
+        <div class="tool-tags">
+          <span class="tool-tag">Databricks</span><span class="tool-tag">Mixpanel</span><span class="tool-tag">Pendo</span>
+          <span class="tool-tag">Google Analytics</span><span class="tool-tag">AG Grid</span>
+          <span class="tool-tag">Azure Data Lake</span><span class="tool-tag">SQL</span>
+        </div>
+      </div>
+      <div class="tool-card">
+        <div class="tool-card-header"><span class="tool-icon" aria-hidden="true">☁️</span><span class="tool-title">Cloud &amp; FinOps Platforms</span></div>
+        <div class="tool-tags">
+          <span class="tool-tag">AWS</span><span class="tool-tag">Azure</span><span class="tool-tag">GCP</span>
+          <span class="tool-tag">CloudHealth</span><span class="tool-tag">Apptio Cloudability</span>
+          <span class="tool-tag">FinOut</span><span class="tool-tag">Anodot</span><span class="tool-tag">ServiceNow</span>
+          <span class="tool-tag">Kubecost</span><span class="tool-tag">CloudCheckr</span><span class="tool-tag">Turbonomics</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Certifications -->
+    <div style="margin-top:52px">
+      <div class="section-header" style="margin-bottom:24px">
+        <div class="eyebrow">Credentials</div>
+        <h2 class="section-title" style="font-size:24px" id="certs-title">Certifications</h2>
+      </div>
+      <div class="certs-grid" role="list">
+        <div class="cert-item" role="listitem"><div class="cert-icon" aria-hidden="true">💰</div><div class="cert-name">Certified FinOps Practitioner</div></div>
+        <div class="cert-item" role="listitem"><div class="cert-icon" aria-hidden="true">🤖</div><div class="cert-name">Deep Learning and Generative AI</div></div>
+        <div class="cert-item" role="listitem"><div class="cert-icon" aria-hidden="true">🎯</div><div class="cert-name">AI for Product Management</div></div>
+        <div class="cert-item" role="listitem"><div class="cert-icon" aria-hidden="true">🌱</div><div class="cert-name">Cloud Sustainability Fundamentals</div></div>
+        <div class="cert-item" role="listitem"><div class="cert-icon" aria-hidden="true">💻</div><div class="cert-name">IT Asset Management Operations</div></div>
+        <div class="cert-item" role="listitem"><div class="cert-icon" aria-hidden="true">🧱</div><div class="cert-name">Databricks Lakehouse Fundamentals</div></div>
+        <div class="cert-item" role="listitem"><div class="cert-icon" aria-hidden="true">📈</div><div class="cert-name">Google Analytics</div></div>
+        <div class="cert-item" role="listitem"><div class="cert-icon" aria-hidden="true">🏅</div><div class="cert-name">Professional Scrum Product Owner 1 (PSPO I)</div></div>
+        <div class="cert-item" role="listitem"><div class="cert-icon" aria-hidden="true">🎓</div><div class="cert-name">Certified Pega Business Architect (CPBA)</div></div>
+      </div>
+    </div>
+
+    <!-- Education -->
+    <div style="margin-top:52px">
+      <div class="section-header" style="margin-bottom:24px">
+        <div class="eyebrow">Education</div>
+        <h2 class="section-title" style="font-size:24px" id="edu-title">Academic Background</h2>
+      </div>
+      <div class="edu-grid">
+        <div class="edu-card">
+          <div class="edu-icon" aria-hidden="true">🎓</div>
+          <div>
+            <div class="edu-degree">Master of Business Administration (MBA)</div>
+            <div class="edu-inst">Great Lakes Institute of Management, Chennai</div>
+            <div class="edu-year">2013 – 2014</div>
+          </div>
+        </div>
+        <div class="edu-card">
+          <div class="edu-icon" aria-hidden="true">💻</div>
+          <div>
+            <div class="edu-degree">B.Tech — Information Technology</div>
+            <div class="edu-inst">YMCA Institute of Engineering, Faridabad</div>
+            <div class="edu-year">2006 – 2010</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══ CONTACT ═══ -->
+<section class="contact-section" id="contact" aria-labelledby="contact-title">
+  <div class="container">
+    <div class="contact-grid">
+      <div>
+        <div class="eyebrow" style="color:rgba(255,255,255,.45)">Get in Touch</div>
+        <h2 class="contact-title" id="contact-title">Let's build something great together</h2>
+        <p class="contact-desc">Open to Director of Product Management, Principal PM, and Head of Product roles. Also available for FinOps consulting and product mentorship via Topmate.</p>
+        
+      </div>
+
+      <div>
+        <div class="contact-links">
+          <a href="mailto:amitflexera.ai@gmail.com" class="contact-link-item" aria-label="Email Amit">
+            <div class="contact-link-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            </div>
+            <div>
+              <div class="contact-link-label">Email</div>
+              <div class="contact-link-val">amitflexera.ai@gmail.com</div>
+            </div>
+          </a>
+          <a href="tel:+919811238573" class="contact-link-item" aria-label="Call Amit">
+            <div class="contact-link-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2.18h3a2 2 0 0 1 2 1.72c.128.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.572 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            </div>
+            <div>
+              <div class="contact-link-label">Phone</div>
+              <div class="contact-link-val">+91-9811238573</div>
+            </div>
+          </a>
+          <a href="https://www.linkedin.com/in/amit-aggarwal-1458434b/" target="_blank" rel="noopener" class="contact-link-item" aria-label="LinkedIn profile">
+            <div class="contact-link-icon">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+            </div>
+            <div>
+              <div class="contact-link-label">LinkedIn</div>
+              <div class="contact-link-val">amit-aggarwal-1458434b</div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ═══ FOOTER ═══ -->
+<footer>
+  <span class="footer-copy">© 2026 Amit Aggarwal · Product Leader</span>
+  <div class="footer-links">
+    <a href="https://www.linkedin.com/in/amit-aggarwal-1458434b/" target="_blank" rel="noopener" class="footer-link">LinkedIn</a>
+    <a href="https://topmate.io/amit_aggarwal10" target="_blank" rel="noopener" class="footer-link">Topmate</a>
+    <a href="https://www.amazon.in/FinOps-Efficiency-Mentoring-Professionals-Productivity/dp/9355512635" target="_blank" rel="noopener" class="footer-link">FinOps Book</a>
+    <a href="mailto:amitflexera.ai@gmail.com" class="footer-link">Email</a>
+  </div>
+</footer>
+
+<script>
+/* ── MOBILE NAV ── */
+const hamburger = document.getElementById('hamburger');
+const mobileNav = document.getElementById('mobileNav');
+
+hamburger.addEventListener('click', () => {
+  const isOpen = mobileNav.classList.toggle('open');
+  hamburger.classList.toggle('open', isOpen);
+  hamburger.setAttribute('aria-expanded', isOpen);
+});
+
+// Close mobile nav when a link is clicked
+mobileNav.querySelectorAll('a').forEach(link => {
+  link.addEventListener('click', () => {
+    mobileNav.classList.remove('open');
+    hamburger.classList.remove('open');
+    hamburger.setAttribute('aria-expanded', 'false');
+  });
+});
+
+/* ── SCROLL TO JOB ── */
+function focusJob(id, btn) {
+  const el = document.getElementById(id);
+  if (!el) return;
+  const offset = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--nav-h')) + 20;
+  const top = el.getBoundingClientRect().top + window.scrollY - offset;
+  window.scrollTo({ top, behavior: 'smooth' });
+
+  document.querySelectorAll('.exp-nav-btn').forEach(b => {
+    b.classList.remove('active');
+    b.setAttribute('aria-selected', 'false');
+  });
+  btn.classList.add('active');
+  btn.setAttribute('aria-selected', 'true');
+}
+
+/* ── ACTIVE NAV ON SCROLL ── */
+const jobIds = ['flexera','milestone','hcl','deutsche','tcs'];
+const navBtns = document.querySelectorAll('.exp-nav-btn');
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const idx = jobIds.indexOf(entry.target.id);
+      if (idx > -1) {
+        navBtns.forEach((b,i) => {
+          b.classList.toggle('active', i === idx);
+          b.setAttribute('aria-selected', i === idx ? 'true' : 'false');
+        });
+      }
+    }
+  });
+}, { rootMargin: '-20% 0px -60% 0px' });
+
+jobIds.forEach(id => {
+  const el = document.getElementById(id);
+  if (el) observer.observe(el);
+});
+
+/* ── SCROLL ANIMATIONS ── */
+const animEls = document.querySelectorAll('.metric-card, .exp-card, .summary-item, .cert-item, .tool-card, .edu-card');
+const animObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.style.opacity = '1';
+      entry.target.style.transform = 'translateY(0)';
+      animObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1 });
+
+animEls.forEach(el => {
+  el.style.opacity = '0';
+  el.style.transform = 'translateY(16px)';
+  el.style.transition = 'opacity .4s ease, transform .4s ease';
+  animObserver.observe(el);
+});
+</script>
+</body>
+</html>
