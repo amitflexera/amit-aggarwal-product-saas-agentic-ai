@@ -253,7 +253,8 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
 
 /* Hero Video */
 .hero-video{border-radius:var(--r-2xl);overflow:hidden;box-shadow:var(--shadow-xl);background:var(--gray-900);align-self:start;margin-top:54px}
-.hero-video video{width:100%;height:auto;display:block;border-radius:var(--r-2xl)}
+.hero-video-ratio{position:relative;width:100%;padding-top:56.25%}
+.hero-video-ratio iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:none;display:block}
 
 /* ═══════════════════════════════════════════
    IMPACT METRICS
@@ -603,13 +604,15 @@ footer{background:var(--gray-900);border-top:1px solid rgba(255,255,255,.08);pad
 
       <!-- Hero video -->
       <div class="hero-video anim-3">
-        <video
-          controls
-          preload="metadata"
-          aria-label="Featured video">
-          <source src="https://drive.google.com/uc?export=download&id=1mmCJaUtqSd1d3K6JKRPitA5_mdVFwXbQ" type="video/mp4">
-          Your browser does not support the video tag.
-        </video>
+        <div class="hero-video-ratio">
+          <iframe
+            src="https://drive.google.com/file/d/1mmCJaUtqSd1d3K6JKRPitA5_mdVFwXbQ/preview"
+            allow="autoplay"
+            allowfullscreen
+            title="Amit Aggarwal · Featured video"
+            loading="lazy">
+          </iframe>
+        </div>
       </div>
     </div>
   </div>
