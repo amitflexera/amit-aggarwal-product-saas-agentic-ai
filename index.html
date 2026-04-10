@@ -238,30 +238,22 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
   border-bottom:1px solid var(--gray-200);
   padding:64px 0 56px;
 }
-.hero-grid{display:grid;grid-template-columns:1fr 360px;gap:60px;align-items:center}
+.hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
 .hero-eyebrow-wrap{display:flex;align-items:center;gap:8px;margin-bottom:20px;flex-wrap:wrap}
 .hero-name{font-size:48px;font-weight:800;letter-spacing:-1.5px;color:var(--gray-900);line-height:1.1;margin-bottom:10px}
 .hero-name em{font-style:normal;color:var(--primary-600)}
 .hero-tagline{font-size:18px;font-weight:500;color:var(--gray-600);margin-bottom:18px;letter-spacing:-.2px;line-height:1.5}
 .hero-desc{font-size:15px;color:var(--gray-500);line-height:1.8;margin-bottom:28px;max-width:540px}
-.hero-actions{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:28px}
+.hero-actions{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:28px}
+.hero-actions .btn{justify-content:center}
 .hero-contacts{display:flex;flex-wrap:wrap;align-items:center;gap:16px;padding-top:22px;border-top:1px solid var(--gray-200)}
 .hero-contact-link{display:flex;align-items:center;gap:6px;font-size:13px;font-weight:500;color:var(--gray-500);transition:color .15s}
 .hero-contact-link:hover{color:var(--primary-600)}
 .hero-contact-link svg{width:15px;height:15px;flex-shrink:0}
 
-/* Hero Card */
-.hero-card{background:var(--gray-25);border:1px solid var(--gray-200);border-radius:var(--r-2xl);padding:24px;box-shadow:var(--shadow-xl)}
-.hero-card-profile{display:flex;align-items:center;gap:12px;margin-bottom:20px;padding-bottom:18px;border-bottom:1px solid var(--gray-200)}
-.hero-card-avatar{width:48px;height:48px;border-radius:var(--r-full);background:linear-gradient(135deg,var(--primary-700),var(--primary-500));color:#fff;font-size:18px;font-weight:800;letter-spacing:-1px;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 12px rgba(68,76,231,.3);flex-shrink:0}
-.hero-card-name{font-size:15px;font-weight:700;color:var(--gray-900);letter-spacing:-.2px}
-.hero-card-role{font-size:12px;color:var(--gray-500)}
-.hero-stats-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:16px}
-.hero-stat{background:#fff;border:1px solid var(--gray-200);border-radius:var(--r-lg);padding:14px 12px;text-align:center}
-.hero-stat-num{font-size:22px;font-weight:800;color:var(--gray-900);letter-spacing:-1px;line-height:1;margin-bottom:3px}
-.hero-stat-num b{color:var(--primary-600)}
-.hero-stat-label{font-size:11px;color:var(--gray-500);font-weight:500;line-height:1.4}
-.hero-chips{display:flex;flex-wrap:wrap;gap:7px}
+/* Hero Video */
+.hero-video{border-radius:var(--r-2xl);overflow:hidden;box-shadow:var(--shadow-xl);background:var(--gray-900);align-self:start;margin-top:54px}
+.hero-video video{width:100%;height:auto;display:block;border-radius:var(--r-2xl)}
 
 /* ═══════════════════════════════════════════
    IMPACT METRICS
@@ -458,7 +450,7 @@ footer{background:var(--gray-900);border-top:1px solid rgba(255,255,255,.08);pad
   .nav-cta{display:none}
   .nav-hamburger{display:flex}
   .hero-grid{grid-template-columns:1fr}
-  .hero-card{display:none}
+  .hero-video{margin-top:24px}
   .metrics-grid{grid-template-columns:repeat(2,1fr)}
   .expertise-grid{grid-template-columns:repeat(2,1fr)}
   .summary-grid{grid-template-columns:1fr}
@@ -516,7 +508,7 @@ footer{background:var(--gray-900);border-top:1px solid rgba(255,255,255,.08);pad
 @media(max-width:400px){
   .metrics-grid{grid-template-columns:1fr}
   .finops-grid{grid-template-columns:repeat(2,1fr)}
-  .hero-actions{flex-direction:column}
+  .hero-actions{display:flex;flex-direction:column;gap:10px}
   .hero-actions .btn{width:100%;justify-content:center}
   .hero-actions p{width:100%;box-sizing:border-box}
   .hero-name{font-size:28px}
@@ -609,29 +601,15 @@ footer{background:var(--gray-900);border-top:1px solid rgba(255,255,255,.08);pad
         </div>-->
       </div>
 
-      <!-- Hero stat card -->
-      <div class="hero-card anim-3" aria-label="Quick stats">
-        <div class="hero-card-profile">
-          <div class="hero-card-avatar" aria-hidden="true">AA</div>
-          <div>
-            <div class="hero-card-name">Amit Aggarwal</div>
-            <div class="hero-card-role">Sr. Product Manager · Flexera</div>
-          </div>
-        </div>
-        <div class="hero-stats-grid">
-          <div class="hero-stat"><div class="hero-stat-num">14<b>+</b></div><div class="hero-stat-label">Years Experience</div></div>
-          <div class="hero-stat"><div class="hero-stat-num">10<b>K+</b></div><div class="hero-stat-label">Customers Onboarded</div></div>
-          <div class="hero-stat"><div class="hero-stat-num">$1<b>M+</b></div><div class="hero-stat-label">Customer Savings</div></div>
-          <div class="hero-stat"><div class="hero-stat-num">20<b>%</b></div><div class="hero-stat-label">Reduction in Cloud Spend</div></div>
-        </div>
-        <div class="hero-chips">
-          <span class="badge badge-blue">Agentic AI</span>
-          <span class="badge badge-blue">AI Ways of working</span>
-          <span class="badge badge-green">Scaling Enterprise SaaS </span>
-          <span class="badge badge-amber">Published Author</span>
-          <span class="badge badge-blue">Topmate Mentor</span>
-          <span class="badge badge-green">FinOps</span>
-        </div>
+      <!-- Hero video -->
+      <div class="hero-video anim-3">
+        <video
+          controls
+          preload="metadata"
+          aria-label="Featured video">
+          <source src="Video Resume.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
       </div>
     </div>
   </div>
